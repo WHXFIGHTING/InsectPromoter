@@ -1,0 +1,47 @@
+{
+  "version": "paper_activity_rules_v1",
+  "description": "Model-derived 6-mer replacement rules used for the paper's 133 bp activity-enhancement design.",
+  "sequence_length": 133,
+  "coordinate_start": -66,
+  "slots": [
+    {"start": -59, "zone": "generic"},
+    {"start": -52, "zone": "generic"},
+    {"start": -45, "zone": "upstream"},
+    {"start": -38, "zone": "upstream"},
+    {"start": -31, "zone": "upstream"},
+    {"start": -24, "zone": "upstream"},
+    {"start": -17, "zone": "tss_core"},
+    {"start": -10, "zone": "tss_core"},
+    {"start": -3, "zone": "tss_core"},
+    {"start": 4, "zone": "tss_core"},
+    {"start": 11, "zone": "tss_core"}
+  ],
+  "motifs_by_zone": {
+    "upstream": [
+      "ATCGAT", "TCGATA", "TATCGA", "CGATAG", "CTATCG", "AATCGA",
+      "GGTCAC", "GTCACA"
+    ],
+    "tss_core": [
+      "GGTCAC", "CACACT", "TCACAC", "ACACTG", "GTCACA", "CGGTCA",
+      "TGGTCA", "CACTGG", "ACGGTC", "ATCGAT"
+    ],
+    "generic": [
+      "GGTCAC", "CACACT", "TCACAC", "ACACTG", "GTCACA", "ATCGAT",
+      "TCGATA", "TATCGA", "CGATAG"
+    ]
+  },
+  "search": {
+    "max_edits": 4,
+    "beam_size": 80,
+    "batch_size": 128
+  },
+  "constraints": {
+    "min_promoter_score": 0.95,
+    "max_changed_bp": 24,
+    "min_gc": 0.25,
+    "max_gc": 0.70,
+    "max_homopolymer": 6,
+    "forbidden_sites": []
+  },
+  "provenance": "Candidate 6-mers and positions were derived from the final activity head using a 6-bp loss scan and Kernel SHAP analysis of the held-out STAP-seq test set."
+}
